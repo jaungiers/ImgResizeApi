@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Knowledge-Egg</title>
+    <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="http://getbootstrap.com/examples/jumbotron-narrow/jumbotron-narrow.css" rel="stylesheet"> 
+</head>
+
+<body>
+    <div class="container"> 
+        <div class="jumbotron">
+            <h1>Image Resize API</h1>
+            <p>
+                Utilising Python Flask, OpenCV, Numpy on Apache2
+            </p>
+            <p>
+                To use paste your image URL here: <input type="text" name="iurl" id="iurl" />
+                Required Size: Width <input type="text" name="width" id="width" /> Height: <input type="text" name="height" id="height" />
+                <input type="button" value="Generate Image Link" />
+            </p>
+            <img src="../static/{{ filename }}?{{ noCache }}" />
+        </div>
+    </div>
+</body>
+</html>
