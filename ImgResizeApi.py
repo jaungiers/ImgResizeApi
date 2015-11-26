@@ -1,18 +1,19 @@
 import os
+from flask import Flask, render_template, request, send_file
+'''
 import time, datetime
 import random
 import numpy as np
 import cv2
 import urllib2
-from flask import Flask, render_template, request, send_file
-
+'''
 ImgResizeApi = Flask(__name__)
 
 @ImgResizeApi.route('/')
 def main():
-	cleanup_temps()
+	#cleanup_temps()
 	return render_template('index.html')
-
+'''
 @ImgResizeApi.route('/api')
 def imgRs():
 	basePath = 'static/images/temp/'
@@ -38,6 +39,6 @@ def cleanup_temps():
 	for f in os.listdir(basePath):
 		if os.path.getctime(basePath + f) < (time.time() - deleteDelay):
 			os.remove(basePath + f)
-
+'''
 if __name__ == '__main__':
 	ImgResizeApi.run()
