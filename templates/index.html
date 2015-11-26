@@ -1,24 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Knowledge-Egg</title>
+    <title>Image Resize API</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="http://getbootstrap.com/examples/jumbotron-narrow/jumbotron-narrow.css" rel="stylesheet"> 
+    <link href="http://getbootstrap.com/examples/jumbotron-narrow/jumbotron-narrow.css" rel="stylesheet">
+
+    <style>
+        input#iurl {
+            width:100%;
+        }
+
+        input.sizes {
+            width: 60px;
+        }
+
+        .right {
+            text-align: right;
+        }
+
+        .left {
+            text-align: left;
+        }
+    </style>
+
+    <script>
+        $(document).ready(function() {
+            $('#generate').click(function() {
+                var iurl = $('#iurl').val()
+                var width = $('#width').val()
+                var height = $('#height').val()
+                var baseUrl = window.location.href
+                var apiUrl = 'api'
+                var params = 'iurl=' + iurl + '&w=' + width + '&h=' + height
+                $('#rsurl').text(baseUrl + apiUrl + '?' + params);
+            });
+        });
+    </script>
 </head>
 
 <body>
     <div class="container"> 
         <div class="jumbotron">
             <h1>Image Resize API</h1>
+
             <p>
                 Utilising Python Flask, OpenCV, Numpy on Apache2
             </p>
-            <p>
-                To use paste your image URL here: <input type="text" name="iurl" id="iurl" />
-                Required Size: Width <input type="text" name="width" id="width" /> Height: <input type="text" name="height" id="height" />
-                <input type="button" value="Generate Image Link" />
-            </p>
-            <img src="../static/{{ filename }}?{{ noCache }}" />
+
+            <div class="row">
+                <div class="col-md-6 right">
+                    To use paste your image URL here:
+                </div>
+                <div class="col-md-6 left">
+                    <input type="text" placeholder="http://www.your-site.com/image.png" name="iurl" id="iurl" />
+                </div>
+                
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 right">
+                    Required Size:
+                </div>
+                <div class="col-md-6 left">
+                    <div class="row">
+                        <input type="text" placeholder="width" name="width" id="width" class="sizes" />
+                    </div>
+                    <div class="row">
+                        <input type="text" placeholder="height" name="height" id="height" class="sizes" />
+                    </div>
+                </div>
+            </div>
+            <input type="button" id="generate" value="Generate Image Link" />
+
+            <div class="row">
+                <h2 id="rsurl"></h2>
+            </div>
         </div>
     </div>
 </body>
