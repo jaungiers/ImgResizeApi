@@ -11,12 +11,12 @@ ImgResizeApi = Flask(__name__)
 
 @ImgResizeApi.route('/')
 def main():
-	#cleanup_temps()
+	cleanup_temps()
 	return render_template('index.html')
 
 @ImgResizeApi.route('/api')
 def imgRs():
-	basePath = 'static/images/temp/'
+	basePath = os.path.dirname(os.path.realpath('__file__')) + '/static/images/temp/'
 	imgUrl = request.args.get('iurl')
 	width  = request.args.get('w')
 	height = request.args.get('h')
@@ -34,7 +34,7 @@ def fetchImg(imgUrl):
 	return img
 
 def cleanup_temps():
-	basePath = 'static/images/temp/'
+	basePath = os.path.dirname(os.path.realpath('__file__')) + '/static/images/temp/'
 	deleteDelay = 20
 	for f in os.listdir(basePath):
 		if os.path.getctime(basePath + f) < (time.time() - deleteDelay):
