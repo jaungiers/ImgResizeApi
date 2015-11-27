@@ -11,7 +11,7 @@ ImgResizeApi = Flask(__name__)
 
 @ImgResizeApi.route('/')
 def main():
-	cleanup_temps()
+	#cleanup_temps()
 	return render_template('index.html')
 
 @ImgResizeApi.route('/api')
