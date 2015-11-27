@@ -22,12 +22,10 @@ def imgRs():
 	height = request.args.get('h')
 	inpImg = fetchImg(imgUrl)
 	outImg = cv2.resize(inpImg, (int(width), int(height)))
-	'''
+	
 	filename = str(time.time()) +  str(random.randrange(0,100000)) + '.png'
 	cv2.imwrite(basePath + filename, outImg)
 	return send_file(basePath + filename, mimetype='image/png')
-	'''
-	return render_template('index.html')
 
 def fetchImg(imgUrl):
 	req = urllib2.urlopen(imgUrl)
